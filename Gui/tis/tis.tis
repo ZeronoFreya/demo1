@@ -1,0 +1,19 @@
+﻿include "common.tis";
+self.ready = function() {
+    //设置窗口居中
+    setWinToCenter(300,300);
+    //设置窗口置顶
+    view.windowTopmost = true;
+    // 加载或刷新deBug？
+    $(#window-debug).on("click",function(){
+        Sciter.launch( "inspector.exe" );
+        view.connectToInspector($(html));
+    });
+    $(.click-me).on("click",function(){
+        view.clickMe();  //view Sciter内置的对象，所有tis都可调用
+    })
+}
+function clickCallBack(p1){
+    $(footer>section).text = p1;
+    return;
+}
