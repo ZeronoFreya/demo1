@@ -2,6 +2,7 @@
 import sciter
 import ctypes
 import json
+import time
 
 # 设置dpi, 防止程序在高分屏下发虚
 ctypes.windll.user32.SetProcessDPIAware(2)
@@ -18,6 +19,8 @@ class Frame(sciter.Window):
         self.set_dispatch_options(enable=True, require_attribute=False)
 
     def clickMe(self):
+        # 此处用sleep来模拟需要耗时的操作
+        time.sleep(5)
         self.call_function('clickCallBack','你已经点到我了!')
 
 if __name__ == '__main__':
